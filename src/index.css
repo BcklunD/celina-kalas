@@ -7,7 +7,94 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  font-family: "Madimi One", sans-serif;
+  font-style: normal;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+nav#navbar {
+  display: flex;
+  align-items: center;
+  margin-inline: 1rem;
+  column-gap: 15px;
+}
+
+#navbar a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+nav#navbar a:has(h1) {
+  margin-right: auto;
+}
+
+nav#navbar a:not(:has(h1)):hover {
+  text-decoration: underline;
+}
+
+#navbar h1 {
+  font-weight: normal;
+}
+
+#content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#namn-backdrop {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background: #04040466;
+  top: 0;
+  z-index: 1;
+}
+
+#namn-selector {
+  z-index: 2;
+  position: absolute;
+  background: white;
+  padding: 1.6rem 2rem 2.2rem;
+  margin-top: 15%;
+  border-radius: 8px;
+}
+
+input[type="text"] {
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 6px 8px;
+}
+
+button {
+  background: white;
+  border-radius: 3px;
+  border: 1px solid #c4c4c4;
+  font-size: 16px;
+  padding: 6px 8px;
+  transition: all .2s;
+}
+
+button:hover {
+  color: white;
+  background: #d8d8d8;
+}
+
+#namn-selector button {
+  margin-left: 15px;
+}
+
+#namn-selector h2 {
+  margin-bottom: 30px;
+}
+
+.hidden {
+  visibility: hidden;
 }

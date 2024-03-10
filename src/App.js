@@ -1,23 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import NamnSelector from './components/NamnSelector';
+import Tipspromenad from './components/Tipspromenad';
 
 function App() {
+  // localStorage.removeItem('person');
+  console.log(`person:`, localStorage.getItem('person'));
+  const person = localStorage.getItem('person');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id='content'>
+      {person === null ? <NamnSelector /> : <Tipspromenad id={person.id} />}
     </div>
   );
 }
