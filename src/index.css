@@ -89,6 +89,7 @@ button {
   padding: 10px 16px;
   transition: all .2s;
   cursor: pointer;
+  color: black;
 }
 
 button:hover {
