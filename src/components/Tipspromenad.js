@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from '../utils/supabase'
+import { supabase } from '../utils/supabase';
+import PuffLoader from "react-spinners/PuffLoader";
+
+const override = {
+    display: "block",
+    height: "85px",
+    borderColor: "red",
+    marginTop: "30px",
+};
 
 export default function Tipspromenad() {
     const id = JSON.parse(localStorage.getItem('person')).id;
@@ -8,6 +16,7 @@ export default function Tipspromenad() {
     const [svar, setSvar] = useState(1);
     const [fraga, setFraga] = useState(null);
     const [nastaFinns, setNastaFinns] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -27,7 +36,9 @@ export default function Tipspromenad() {
                 setSvar(dataSvar[0].svar);
             else
                 setSvar(1);
+            setIsLoading(false);
         }
+        setIsLoading(true);
         getFraga()
     }, [fragaNummer, id])
 
@@ -48,7 +59,15 @@ export default function Tipspromenad() {
     return (
         <div className='tipspromenad-div'>
             <h2>Fråga {fragaNummer}</h2>
-            <legend>{fraga.fraga}</legend>
+            {/* <legend>{fraga.fraga}</legend> */}
+            {isLoading ? <PuffLoader
+                color={"#000000"}
+                loading={isLoading}
+                cssOverride={override}
+                size={15}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            /> : 
             <div className='alternativ'>
                 {fraga.alternativ.map(alternativ => {
                     return (
@@ -65,7 +84,7 @@ export default function Tipspromenad() {
                         </div>
                     )
                 })}
-            </div>
+            </div>}
             <div className="button-row">
                 <button className={fragaNummer === 1 ? "hidden" : ""} onClick={onGoBack}>Gå tillbaka</button>
                 <button className='primary-btn' onClick={onSubmitSvar}>{nastaFinns ? "Nästa" : "Spara och avsluta"}</button>

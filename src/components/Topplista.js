@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from '../utils/supabase'
 
-function compare(a, b) {
-  return b.antalRatt - a.antalRatt;
-}
-
 export default function Topplista() {
   const id = JSON.parse(localStorage.getItem('person')).id;
   const [resultat, setResultat] = useState([]);

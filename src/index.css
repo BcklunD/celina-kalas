@@ -5,11 +5,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body {
   font-family: "Madimi One", sans-serif;
   font-style: normal;
+  
+  min-height: 100svh;
+  background: #3CA55C;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #B5AC49, #3CA55C);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #B5AC49, #3CA55C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 code {
@@ -30,16 +32,14 @@ nav#navbar {
   font-size: 1.2rem;
 }
 
-#navbar a.active:not(:has(.navbar-title)) {
+#navbar a.active:not(:has(.navbar-title)),
+nav#navbar a:not(:has(h1)):hover {
   text-decoration: underline;
+  text-decoration-color: white;
 }
 
 nav#navbar a:has(h1) {
   margin-right: auto;
-}
-
-nav#navbar a:not(:has(h1)):hover {
-  text-decoration: underline;
 }
 
 #navbar h1 {
@@ -88,11 +88,17 @@ button {
   font-size: 16px;
   padding: 10px 16px;
   transition: all .2s;
+  font-family: cursive;
+  cursor: pointer;
 }
 
 button:hover {
   color: white;
   background: #d8d8d8;
+}
+
+button:active {
+  border-color: black;
 }
 
 #namn-selector button {
@@ -108,32 +114,34 @@ button:hover {
 }
 
 .primary-btn {
-  background: #337AB7;
-  color: white;
+  background: #ee964b;
+  border-color: #d74e09;
 }
 .primary-btn:hover {
-  background: #286090;
+  background: #bb3e03;
 }
 .tipspromenad-div {
   display: flex;
   flex-direction: column;
   row-gap: 15px;
   font-size: 1.1rem;
+  align-items: center;
 }
 .tipspromenad-div legend {
   font-size: 1.35rem;
 }
 .tipspromenad-div .alternativ {
-  margin-left: 15px;
+  margin-bottom: 15px;
 }
 .alternativ div {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-bottom: 7px;
+  margin-bottom: 10px;
 }
 .alternativ input {
   transform: scale(1.4);
+  accent-color: #fb8500;
 }
 .button-row {
   display: flex;
@@ -149,12 +157,13 @@ button:hover {
   margin: 0;
 }
 .navbar-title h1 {
-  margin-left: 7px;
+  margin-left: 4px;
   margin-top: 10px;
   margin-bottom: 3px;
 }
 .navbar-title p {
-  color: gray;
+  color: #303030;
+  font-size: 1.1rem;
 }
 .topplista-div {
   text-align: center;
@@ -164,7 +173,8 @@ table {
   border-spacing: 0;
 }
 table th {
-  border-bottom: 2px solid silver;
+  border-bottom: 2px solid white;
+  font-size: 1.2rem;
 }
 table th, table td {
   padding-inline: 10px;
