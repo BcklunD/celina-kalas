@@ -30,6 +30,10 @@ nav#navbar {
   font-size: 1.2rem;
 }
 
+#navbar a.active {
+  text-decoration: underline;
+}
+
 nav#navbar a:has(h1) {
   margin-right: auto;
 }
@@ -52,7 +56,7 @@ nav#navbar a:not(:has(h1)):hover {
   height: 100vh;
   width: 100vw;
   position: absolute;
-  background: #04040466;
+  background: #9d9c9c66;
   top: 0;
   z-index: 1;
 }
@@ -62,23 +66,27 @@ nav#navbar a:not(:has(h1)):hover {
   position: absolute;
   background: white;
   padding: 1.6rem 2rem 2.2rem;
-  margin-top: 15%;
   border-radius: 8px;
+  width: fit-content;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  margin-top: 5%;
 }
 
 input[type="text"] {
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid gray;
-  padding: 6px 8px;
+  padding: 10px 8px;
 }
 
 button {
   background: white;
-  border-radius: 3px;
+  border-radius: 20px;
   border: 1px solid #c4c4c4;
   font-size: 16px;
-  padding: 6px 8px;
+  padding: 10px 16px;
   transition: all .2s;
 }
 
@@ -97,4 +105,70 @@ button:hover {
 
 .hidden {
   visibility: hidden;
+}
+
+.primary-btn {
+  background: #337AB7;
+  color: white;
+}
+.primary-btn:hover {
+  background: #286090;
+}
+.tipspromenad-div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  font-size: 1.1rem;
+}
+.tipspromenad-div legend {
+  font-size: 1.35rem;
+}
+.tipspromenad-div .alternativ {
+  margin-left: 15px;
+}
+.alternativ div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 7px;
+}
+.alternativ input {
+  transform: scale(1.4);
+}
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.navbar-title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.navbar-title > * {
+  margin: 0;
+}
+.navbar-title h1 {
+  margin-left: 7px;
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+.navbar-title p {
+  color: gray;
+}
+.topplista-div {
+  text-align: center;
+}
+table {
+  font-size: 1.1rem;
+  border-spacing: 0;
+}
+table th {
+  border-bottom: 2px solid silver;
+}
+table th, table td {
+  padding-inline: 10px;
+}
+table tbody tr:first-of-type {
+  height: 40px;
 }

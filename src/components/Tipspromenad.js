@@ -1,64 +1,75 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from '../utils/supabase'
 
-export default function Tipspromenad({ id }) {
+export default function Tipspromenad() {
+    const id = JSON.parse(localStorage.getItem('person')).id;
     const [fragaNummer, setFragaNummer] = useState(1);
     const [svar, setSvar] = useState(1);
     const [fraga, setFraga] = useState(null);
+    const [nastaFinns, setNastaFinns] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function getFraga() {
-            const { dataFraga } = await supabase.from('fraga').select(`
+            const { data: dataFraga } = await supabase.from('fraga').select(`
             nummer,
             fraga,
             alternativ ( alternativ, text )`).eq('nummer', fragaNummer);
-            console.log(dataFraga);
             setFraga(dataFraga[0]);
-
-            const { dataSvar } = await supabase.from('svar').select(`
+            const { data: dataFragaNasta } = await supabase.from('fraga').select(`nummer`).eq('nummer', fragaNummer + 1);
+            setNastaFinns(dataFragaNasta.length > 0);
+            const { data: dataSvar } = await supabase.from('svar').select(`
             person,
-            svar`).eq('person', id);
-            console.log(dataSvar);
-            if (dataSvar !== null)
-                setSvar(dataSvar[0]);
+            nummer,
+            svar`).eq('person', id).eq("nummer", fragaNummer);
+            if (dataSvar.length > 0)
+                setSvar(dataSvar[0].svar);
+            else
+                setSvar(1);
         }
         getFraga()
-    }, [fragaNummer])
+    }, [fragaNummer, id])
 
     function onGoBack() {
-        setFragaNummer(fragaNummer + 1);
+        setFragaNummer(fragaNummer - 1);
     }
     async function onSubmitSvar() {
-        const { error } = await supabase.from('svar').insert({ person: id, nummer: fragaNummer, svar: svar });
-        setFragaNummer(fragaNummer + 1);
+        const { error } = await supabase.from('svar').upsert({ person: id, nummer: fragaNummer, svar: svar });
+        console.log(error);
+        if (nastaFinns)
+            setFragaNummer(fragaNummer + 1);
+        else
+            navigate("/topp");
     }
 
-    console.log(fraga);
-    if (fraga == null)
+    if (fraga === null)
         return null;
-
     return (
-        <div>
+        <div className='tipspromenad-div'>
             <h2>Fråga {fragaNummer}</h2>
             <legend>{fraga.fraga}</legend>
-            {fraga.alternativ.map(alternativ => {
-                return (
-                    <div>
-                        <input
-                            type="radio"
-                            key={`${fragaNummer}-${alternativ.alternativ}`}
-                            id={`alternativ-${alternativ.alternativ}`}
-                            name="alternativ"
-                            value={alternativ.alternativ}
-                            checked={alternativ.alternativ == svar}
-                            onChange={e => { setSvar(e.target.value); console.log(e.target.value);}}
-                        />
-                        <label for={`alternativ-${alternativ.alternativ}`}>{alternativ.text}</label>
-                    </div>
-                )
-            })}
-            <button className={fragaNummer === 1 ? "hidden" : ""} onClick={onGoBack}>Gå tillbaka</button>
-            <button className='primary-btn' onClick={onSubmitSvar}>Spara</button>
+            <div className='alternativ'>
+                {fraga.alternativ.map(alternativ => {
+                    return (
+                        <div key={`${fragaNummer}-${alternativ.alternativ}`}>
+                            <input
+                                type="radio"
+                                id={`alternativ-${alternativ.alternativ}`}
+                                name="alternativ"
+                                value={alternativ.alternativ}
+                                checked={alternativ.alternativ === parseInt(svar)}
+                                onChange={e => { setSvar(e.target.value); }}
+                            />
+                            <label htmlFor={`alternativ-${alternativ.alternativ}`}>{alternativ.text}</label>
+                        </div>
+                    )
+                })}
+            </div>
+            <div className="button-row">
+                <button className={fragaNummer === 1 ? "hidden" : ""} onClick={onGoBack}>Gå tillbaka</button>
+                <button className='primary-btn' onClick={onSubmitSvar}>{nastaFinns ? "Nästa" : "Spara och avsluta"}</button>
+            </div>
         </div>
     )
 }

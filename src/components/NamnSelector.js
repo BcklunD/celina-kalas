@@ -6,7 +6,7 @@ export default function NamnSelector() {
 
     async function onNamnSelected() {
         const { data } = await supabase.from('person').insert({ namn: namn }).select();
-        localStorage.setItem('person', data[0]);
+        localStorage.setItem('person', JSON.stringify(data[0]));
         window.location.reload();
     }
 
@@ -17,7 +17,7 @@ export default function NamnSelector() {
         <div id='namn-selector'>
             <h2>Välj namn:</h2>
             <input type="text" placeholder='Namn' value={namn} onChange={e => setNamn(e.target.value)} />
-            <button type="button" onClick={onNamnSelected}>Starta</button>
+            <button className='primary-btn' type="button" onClick={onNamnSelected}>Starta</button>
         </div>
     </>
     )

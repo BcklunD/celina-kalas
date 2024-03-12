@@ -1,14 +1,28 @@
 import NamnSelector from './components/NamnSelector';
 import Tipspromenad from './components/Tipspromenad';
+import Topplista from './components/Topplista';
+import Navbar from './components/Navbar';
+import { Route, Routes } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 function App() {
+  const location = useLocation();
+
   // localStorage.removeItem('person');
-  console.log(`person:`, localStorage.getItem('person'));
-  const person = localStorage.getItem('person');
+  const person = JSON.parse(localStorage.getItem('person'));
+  if (person === null)
+    return <NamnSelector />;
+
   return (
-    <div id='content'>
-      {person === null ? <NamnSelector /> : <Tipspromenad id={person.id} />}
-    </div>
+    <>
+      <Navbar />
+      <div id='content'>
+        <Routes key={location.pathname.split("/")[1]} location={location}>
+          <Route exact path="/" element={<Tipspromenad/>}/>
+          <Route exact path="/topp" element={<Topplista/>}/>
+        </Routes>
+      </div>
+    </>
   );
 }
 
