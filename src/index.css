@@ -169,6 +169,10 @@ table th {
 table th, table td {
   padding-inline: 10px;
 }
+table tbody tr {
+  height: 25px;
+}
 table tbody tr:first-of-type {
-  height: 40px;
+  height: 35px;
+  vertical-align: bottom;
 }
