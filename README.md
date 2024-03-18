@@ -1,6 +1,6 @@
 # Celina Kalas - tipspromenad
 
-celina-kalas.vercel.app
+[celina-kalas.vercel.app](https://celina-kalas.vercel.app/)
 
 Det här projektet skapades för ett enkelt sätt att ange svaren och få en topplista på de som har flest rätt under en tipspromenad.
 
