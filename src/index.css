@@ -9,9 +9,8 @@ body {
   font-style: normal;
   
   min-height: 100dvh;
-  background: #3CA55C;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #B5AC49, #3CA55C);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #B5AC49, #3CA55C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #ffb8ff;  /* fallback for old browsers */
+  background: linear-gradient(325deg, rgba(255, 184, 255, 1) 0%, rgb(255 226 138) 62%, rgba(253, 187, 45, 1) 100%);
 }
 
 code {
@@ -90,6 +89,7 @@ button {
   transition: all .2s;
   cursor: pointer;
   color: black;
+  font-family: inherit;
 }
 
 button:hover {
@@ -114,8 +114,8 @@ button:active {
 }
 
 .primary-btn {
-  background: #ee964b;
-  border-color: #d74e09;
+  background: #ffd60a;
+  border-color: #f48c06;
 }
 .primary-btn:hover {
   background: #bb3e03;
@@ -141,7 +141,7 @@ button:active {
 }
 .alternativ input {
   transform: scale(1.4);
-  accent-color: #fb8500;
+  accent-color: #fb00a5;
 }
 .button-row {
   display: flex;
@@ -185,4 +185,8 @@ table tbody tr {
 table tbody tr:first-of-type {
   height: 35px;
   vertical-align: bottom;
+}
+tr.current-person td {
+  font-weight: bold;
+  text-shadow: 0 0 white;
 }

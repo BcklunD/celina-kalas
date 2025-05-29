@@ -5,8 +5,8 @@ export default function Navbar() {
     <nav id='navbar'>
         <NavLink to="/">
           <div className='navbar-title'>
-            <h1>Celina</h1>
-            <p>1-års kalas</p>
+            <h1>Hanna</h1>
+            <p>30-års poolparty</p>
           </div>
         </NavLink>
         <NavLink to="/" activeclassname="active">Tipspromenad</NavLink>

@@ -8,7 +8,6 @@ export default function Topplista() {
   useEffect(() => {
     async function getTopplista() {
         const { data } = await supabase.from('svar').select(`
-        tidpunkt,
         person ( id, namn ),
         alternativ ( correct )`);
         const res = [];

@@ -10,6 +10,7 @@ function App() {
 
   // localStorage.removeItem('person');
   const person = JSON.parse(localStorage.getItem('person'));
+  // console.log(person);
   if (person === null)
     return <NamnSelector />;
 
