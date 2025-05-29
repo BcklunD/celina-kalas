@@ -74,12 +74,19 @@ nav#navbar a:has(h1) {
   margin: 0 auto;
 }
 
+#namn-selector-wrapper {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 input[type="text"] {
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid gray;
   padding: 10px 8px;
   width: 130px;
+  max-width: 100%;
 }
 
 button {
