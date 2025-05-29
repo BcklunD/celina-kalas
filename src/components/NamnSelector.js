@@ -16,8 +16,10 @@ export default function NamnSelector() {
         </div>
         <div id='namn-selector'>
             <h2>Välj namn:</h2>
-            <input type="text" placeholder='Namn' value={namn} onChange={e => setNamn(e.target.value)} />
-            <button className='primary-btn' type="button" onClick={onNamnSelected}>Starta</button>
+            <div id='namn-selector-wrapper'>
+                <input type="text" placeholder='Namn' value={namn} onChange={e => setNamn(e.target.value)} />
+                <button className='primary-btn' type="button" onClick={onNamnSelected}>Starta</button>
+            </div>
         </div>
     </>
     )

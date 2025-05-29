@@ -67,10 +67,11 @@ nav#navbar a:has(h1) {
   padding: 1.6rem 2rem 2.2rem;
   border-radius: 8px;
   width: fit-content;
+  max-width: 70%;
+  top: 12%;
   left: 0;
   right: 0;
   margin: 0 auto;
-  margin-top: 5%;
 }
 
 input[type="text"] {
@@ -78,6 +79,7 @@ input[type="text"] {
   border-radius: 5px;
   border: 1px solid gray;
   padding: 10px 8px;
+  width: 130px;
 }
 
 button {
@@ -99,14 +101,6 @@ button:hover {
 
 button:active {
   border-color: black;
-}
-
-#namn-selector button {
-  margin-left: 15px;
-}
-
-#namn-selector h2 {
-  margin-bottom: 30px;
 }
 
 .hidden {
@@ -136,12 +130,22 @@ button:active {
 .alternativ div {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .alternativ input {
   transform: scale(1.4);
   accent-color: #fb00a5;
+  margin: 0;
+}
+.alternativ input, .alternativ label {
+  cursor: pointer;
+}
+.alternativ label {
+  padding-left: 20px;
+  font-size: 1.3rem;
+}
+.alternativ > div:hover label {
+  color: gray;
 }
 .button-row {
   display: flex;
