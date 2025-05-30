@@ -1,0 +1,31 @@
+nummer;alternativ;text;correct
+1;1;Nya Zeeland;false
+1;2;Sydafrika;true
+1;3;Costa Rica;false
+2;1;Fotboll;false
+2;2;Tennis;false
+2;3;Handboll;true
+3;1;2019;false
+3;2;2018;true
+3;3;2020;false
+4;1;Datatekniker;false
+4;2;Brandman;false
+4;3;Läkare;true
+5;1;Blev jagad av en tjuv;false
+5;2;Krockat med en ko;false
+5;3;Bevakade en mordplats;true
+6;1;Orm;false
+6;2;Dingo (Australiensisk vildhund);false
+6;3;Leopard;true
+7;1;Johnny Cash;true
+7;2;Nirvana;false
+7;3;Tupac;false
+8;1;36;false
+8;2;47;true
+8;3;52;false
+9;1;1;false
+9;2;2;true
+9;3;3;false
+10;1;Ronaldo;false
+10;2;Martin Stenmark;false
+10;3;Håkan Hellström;true
