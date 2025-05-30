@@ -37,7 +37,7 @@ export default function Topplista() {
       <table>
         <thead>
           <tr>
-            <th>Namn</th>
+            <th className="left">Namn</th>
             <th>Antal rätt</th>
           </tr>
         </thead>
@@ -45,7 +45,7 @@ export default function Topplista() {
           {resultat.map(person => {
             return (
               <tr key={`tr-${person.id}`} className={`${person.id === id ? "current-person" : ""}`}>
-                <td>{person.namn}</td>
+                <td className="left">{person.namn}</td>
                 <td>{person.antalRatt}</td>
               </tr>
             )

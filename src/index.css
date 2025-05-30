@@ -186,13 +186,21 @@ button:active {
 }
 .topplista-div {
   text-align: center;
+  width: min(95%, 500px);
+}
+.topplista-div td {
+  text-transform: none;
+}
+.topplista-div .left {
+  text-align: left;
 }
 table {
   font-size: 1.1rem;
   border-spacing: 0;
+  width: 100%;
 }
 table th {
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid silver;
   font-size: 1.2rem;
 }
 table th, table td {
